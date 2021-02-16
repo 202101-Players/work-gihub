@@ -70,6 +70,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'byebug'
 
+
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'rspec-rails'
