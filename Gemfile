@@ -66,8 +66,6 @@ gem "devise"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
