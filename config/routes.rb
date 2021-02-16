@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :customers
-  devise_for :admins
+  scope module: :admin do
+    devise_for :admins
+  end
+  
+  scope module: :customers do
+    devise_for :customers
+  end
 
   # ↓↓保留中↓↓↓
   # devise_for :publics
