@@ -13,6 +13,12 @@
     <div>
       <%= render "layouts/header" %>
     </div>
+
+  <% if customer_signed_in? %>
+    <li>
+      <%= link_to 'マイページ', public_customers_my_page_path %>
+    </li>
+  <% end %>
     <%= yield %>
   </body>
 </html>

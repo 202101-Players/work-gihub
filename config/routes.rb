@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'customers/show'
   scope module: :admin do
     devise_for :admins
   end
+
   namespace :admin do
     resources :customers
   end
@@ -15,11 +17,11 @@ Rails.application.routes.draw do
   # ↑↑保留中↑↑↑
 
   root 'homes#top'
-  
-  
-  
-  
-  
-  
+
+  namespace :public,path: "" do
+    resources :customers
+    get '/customers/my_page', to: 'customers#show'
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
