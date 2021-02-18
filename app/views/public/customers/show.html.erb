@@ -1,7 +1,9 @@
 <h2>マイページ</h2>
 
+<div class= "col-md-8 offset-md-1">
+
  <span>登録情報</span>
- <%= link_to '編集する', customers_edit_path, class: "btn btn-success" %>
+ <%= link_to '編集する',edit_public_customers_path, class: "btn btn-success" %>
 
 </div>
  <div class="row">
@@ -9,7 +11,8 @@
     <table class="table table-bordered">
 
     	<tr>
-    		<td><%= @customer.last_name %><%= @customer.first_name %></td>
+    	  <td>氏名</td>
+    	  <td><%= current_customer.last_name %><%= @customer.first_name %></td>
     	</tr>
 
     	<tr>
@@ -19,7 +22,7 @@
 
     	<tr>
     	  <td>郵便番号</td>
-    	   <td><%= @customer.postal_code %></td>
+    	  <td><%= @customer.postal_code %></td>
     	</tr>
 
     	<tr>
@@ -36,6 +39,7 @@
     		<td>メールアドレス</td>
     		<td><%= @customer.email %></td>
     	</tr>
+
     </table>
   </div>
  </div>
