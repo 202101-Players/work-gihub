@@ -11,11 +11,7 @@ Rails.application.routes.draw do
   scope module: :customers do
     devise_for :customers
   end
-  # ↓↓保留中↓↓↓
-  # devise_for :publics
-  # devise_for :users
-  # ↑↑保留中↑↑↑
-
+  
   root 'homes#top'
 
   namespace :admin,path: "" do
@@ -50,7 +46,9 @@ Rails.application.routes.draw do
     
   end
   
-  
+    get 'top' => 'home#top'
+    get 'home/about' => 'home#about'
+    get 'search' => 'search#search'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
