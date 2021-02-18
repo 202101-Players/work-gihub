@@ -14,5 +14,5 @@ class Admin::CustomersController < ApplicationController
 
   def destroy
   end
-  
+
 end
