@@ -5,4 +5,5 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
    has_many :customers
+   has_many :items
 end
