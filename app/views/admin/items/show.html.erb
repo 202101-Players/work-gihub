@@ -1,2 +1,33 @@
 <h2>商品詳細</h2>
 <%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %>
+
+<div>
+    <p>
+        商品名　　　  <%= @item.name %>
+    </p>
+</div>
+<div>
+    <p>
+        商品説明　　　<%= @item.introduction %>
+    </p>
+</div>
+<div>
+    <p>
+        ジャンル　　　<%= @item.genre.name %>
+    </p>
+</div>
+<div>
+    <p>
+        税込価格　　　<%= @item.price %>円
+    </p>
+</div>
+<div>
+	<p>
+	    販売ステータス
+	<% if @item.is_active == true %>
+	  <i class="fas fa-bullseye red"></i>販売中
+	<% elsif @item.is_active == false %>
+	  <i class="fas fa-bullseye blue"></i>販売停止中
+	<% end %>
+	</p>
+</div>
