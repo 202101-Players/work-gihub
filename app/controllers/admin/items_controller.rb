@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
   def new
     @item = Item.new
-    #@genres = Genre.all
+    @genres = Genre.all
   end
 
   def create
@@ -24,14 +24,14 @@ class Admin::ItemsController < ApplicationController
   
   def update
     item = Item.find(params[:id])
-    item.update(item_params)
-    redirect_to dmin_item_path(item.id)
+    item.update!(item_params)
+    redirect_to admin_item_path(item.id)
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name, :image, :introduction, :price, :is_active)
+    params.require(:item).permit(:name, :image, :introduction, :price, :is_active, :genre)
   end
 
 end
