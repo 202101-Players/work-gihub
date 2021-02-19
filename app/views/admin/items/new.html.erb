@@ -12,20 +12,20 @@
   <%= f.label :"商品説明" %>
   <%= f.text_area :introduction %>
  </div>
- <div>
-   <%= f.label :"ジャンル" %>
-   <%= f.collection_select :genre_id, @genres, :id, :name, prompt: "-- 選択してください --" %>
- </div>
+ <!--<div>-->
+ <!--  <%#= f.label :"ジャンル" %>-->
+ <!--  <%#= f.collection_select :genre_id, @genres, :id, :name, prompt: "-- 選択してください --" %>-->
+ <!--</div>-->
  <div>
   <%= f.label :"税抜価格" %>
   <%= f.text_field :price %>円
  </div>
  <div>
-  <%= f.radio_button :done, true %>
+  <%= f.radio_button :is_active, true %>
   <%= f.label :is_active, '販売中', value: true %>
  </div>
  <div>
-  <%= f.radio_button :done, false %>
+  <%= f.radio_button :is_active, false %>
   <%= f.label :is_active, '販売停止中', value: false %>
  </div>
   <%= f.submit '新規登録' %>
