@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # end
 
   scope module: :customers do
-    devise_for :customers
+    devise_for :customers, except: [:edit]
   end
   # ↓↓保留中↓↓↓
   # devise_for :publics
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :public,path: "" do
     resource :customers,only: [:edit, :update]
+      get '/customers/my_page_edit', to: 'customers#edit'
       get '/customers/my_page', to: 'customers#show'
       get '/customers/quit', to: 'customers#quit'
       patch '/customers/withdraw', to: 'customers#withdraw'

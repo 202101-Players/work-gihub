@@ -1,7 +1,7 @@
 <h2>登録情報編集</h2>
 
- <%= form_for(resource, as: resource_name, url: edit_public_customers_path) do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
+ <%= form_with model: @customer, url: public_customers_my_page_edit_path, local:true do |f| %>
+  <%= render "customers/shared/error_messages", resource: @customer %>
 
   <div class="field">
     <%= f.label :"氏名（姓）" %><br/>

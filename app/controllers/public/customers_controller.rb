@@ -8,8 +8,13 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
-  def withdrow
-    @customer =Customer.find(params[:id])
+  def quit
+  end
+
+  def withdraw
+    @customer = current_customer
+    reset_session
+    redirect_to root_path
   end
 
   private
