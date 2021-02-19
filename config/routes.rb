@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :customers,except: [:create, :new, :destroy]
 
-    resources :generes,except: [:new, :show, :destroy]
+    resources :genres,except: [:new, :show, :destroy]
 
     resources :items,except: [:destroy]
 

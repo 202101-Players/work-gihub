@@ -6,4 +6,6 @@ class Admin < ApplicationRecord
   
    has_many :customers
    has_many :items
+   has_many :genres
+
 end
