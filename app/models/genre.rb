@@ -1,4 +1,4 @@
 class Genre < ApplicationRecord
   has_many :item  #admin側商品で追加
-  belongs_to :admin
+  belongs_to :admin, optional: true
 end
