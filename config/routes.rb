@@ -4,9 +4,7 @@ Rails.application.routes.draw do
     devise_for :admin
   # end
 
-  scope module: :customers do
-    devise_for :customers, except: [:edit]
-  end
+
   # ↓↓保留中↓↓↓
   # devise_for :publics
   # devise_for :users
@@ -21,6 +19,7 @@ Rails.application.routes.draw do
       get '/customers/quit', to: 'customers#quit'
       patch '/customers/withdraw', to: 'customers#withdraw'
 
+
     resources :items,only: [:index, :show]
 
     resources :cart_items,only: [:index, :update, :create, :destroy]
@@ -33,6 +32,10 @@ Rails.application.routes.draw do
     resources :addresses,except: [:show, :new]
 
 
+  end
+
+  scope module: :customers do
+    devise_for :customers, except: [:edit]
   end
 
   namespace :admin do

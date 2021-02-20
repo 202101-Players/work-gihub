@@ -1,62 +1,52 @@
-<h3>会員情報編集</h3>
+<h2>登録情報編集</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
+ <%= form_with model: @customer, url: public_customers_path, local:true do |f| %>
+  <%= render "customers/shared/error_messages", resource: @customer %>
 
   <div class="field">
     <%= f.label :"氏名（姓）" %><br/>
     <%= f.text_field :last_name, autofocus: true, autocomplete:"last_name" %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :"氏名（名）" %><br />
     <%= f.text_field :first_name, autofocus: true, autocomplete:"first_name" %>
   </div>
 
-    <div class="field">
-    <%= f.label :"カナ（姓）" %><br/>
+  <div class="field">
+    <%= f.label :"フリガナ（セイ）" %><br />
     <%= f.text_field :last_name_kana, autofocus: true, autocomplete:"last_name_kana" %>
   </div>
 
-      <div class="field">
-    <%= f.label :"カナ（名）" %><br />
+  <div class="field">
+    <%= f.label :"フリガナ（メイ）" %><br />
     <%= f.text_field :first_name_kana, autofocus: true, autocomplete:"first_name_kana" %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :"郵便番号" %><br />
     <%= f.text_field :postal_code, autocomplete: "postal_code" %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :"住所" %><br />
     <%= f.text_field :address, autocomplete: "address"  %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :"電話番号" %><br />
     <%= f.text_field :telephone_number, autocomplete: "telephone_number" %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :"メールアドレス" %><br />
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <%= f.submit '編集内容を保存する',class: "btn btn-success btn-lg" %>
 
+    <div class="row customer_edit">
+        <%= link_to "退会する", public_customers_quit_path, class: "btn btn-danger" %>
+    </div>
 
-  <div class="row">
-    <%= f.label "編集内容を保存する",class: "btn-success"%>
-  </div>
-
-  <div class="row">
-    <%= f.label "退会する",class: "btn-danger"%>
-  </div>
-
-  </div>
-<% end %>
-
-<%= link_to "Back", :back %>
+<%end%>

@@ -1,6 +1,6 @@
 <h2>登録情報編集</h2>
 
- <%= form_with model: @customer, url: public_customers_my_page_edit_path, local:true do |f| %>
+ <%= form_with model: @customer, url: public_customers_path, local:true do |f| %>
   <%= render "customers/shared/error_messages", resource: @customer %>
 
   <div class="field">
@@ -11,6 +11,16 @@
   <div class="field">
     <%= f.label :"氏名（名）" %><br />
     <%= f.text_field :first_name, autofocus: true, autocomplete:"first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"フリガナ（セイ）" %><br />
+    <%= f.text_field :last_name_kana, autofocus: true, autocomplete:"last_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"フリガナ（メイ）" %><br />
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete:"first_name_kana" %>
   </div>
 
   <div class="field">
@@ -33,12 +43,10 @@
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
-  <div class="row">
-    <%= f.label "編集内容を保存する",class: "btn-success"%>
-  </div>
+  <%= f.submit '編集内容を保存する',class: "btn btn-success btn-lg" %>
 
-  <div class="row">
-    <%= f.label "退会する",class: "btn-danger"%>
-  </div>
+    <div class="row customer_edit">
+        <%= link_to "退会する", public_customers_quit_path, class: "btn btn-danger" %>
+    </div>
 
 <%end%>
