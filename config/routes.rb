@@ -12,10 +12,6 @@ Rails.application.routes.draw do
     devise_for :admins
   end
 
-  scope module: :customers do
-    devise_for :customers
-  end
-
   root 'homes#top'
 
   namespace :admin do
@@ -48,6 +44,10 @@ Rails.application.routes.draw do
     resources :addresses,except: [:show, :new]
 
 
+  end
+
+  scope module: :customers do
+    devise_for :customers
   end
 
     get 'top' => 'homes#top'
