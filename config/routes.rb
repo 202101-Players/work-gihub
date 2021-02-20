@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'orders/index'
+    get 'orders/show'
+  end
   scope module: :admin do
     devise_for :admins
   end
@@ -17,7 +21,7 @@ Rails.application.routes.draw do
 
     resources :items,except: [:destroy]
 
-    resources :orders,only: [:show]
+    resources :orders,only: [:index, :show]
      patch '/admin/orders/:order_id/order_details/:id', to: 'order_details#update'
   end
 

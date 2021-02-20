@@ -1,1 +1,34 @@
-adomin itemu show page
+<h2>商品詳細</h2>
+<%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %>
+
+<div>
+    <p>
+        商品名　　　  <%= @item.name %>
+    </p>
+</div>
+<div>
+    <p>
+        商品説明　　　<%= @item.introduction %>
+    </p>
+</div>
+<div>
+    <p>
+        ジャンル　　　<%= @item.genre %>
+    </p>
+</div>
+<div>
+    <p>
+        税込価格　　　<%= @item.price %>円
+    </p>
+</div>
+<div>
+	<p>
+	    販売ステータス
+	<% if @item.is_active == true %>
+	  <%= "販売中" %>
+	<% else %>
+	  <%= "販売停止中" %>
+	<% end %>
+	</p>
+</div>
+<%= link_to "編集", edit_admin_item_path(@item.id) %>
