@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
     resources :items,except: [:destroy]
 
-    resources :orders,only: [:index, :show]
+    resources :orders,only: [:index, :show, :update]
      patch '/admin/orders/:order_id/order_details/:id', to: 'order_details#update'
   end
 
