@@ -1,23 +1,10 @@
 Rails.application.routes.draw do
-
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-  end
+  
   scope module: :admin do
     devise_for :admins
   end
 
-  scope module: :customers do
-    devise_for :customers
-  end
+
 
   root 'homes#top'
 
@@ -52,6 +39,10 @@ Rails.application.routes.draw do
     resources :addresses,except: [:show, :new]
 
 
+  end
+  
+    scope module: :customers do
+    devise_for :customers
   end
 
     get 'top' => 'homes#top'

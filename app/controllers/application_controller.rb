@@ -3,9 +3,14 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     flash[:notice] = "ログインに成功しました"
-    admin_orders_path
+    case resource
+    when Customer
+      root_path
+    when Admin
+      admin_orders_path
+    end
   end
-
+  
   protected
 
   def configure_permitted_parameters
