@@ -5,5 +5,5 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   belongs_to :admin
-  has_many :cart_items, dependent: :destroy
+  has_many :cart_items
 end
