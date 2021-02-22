@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>ショッピングカート</h2>
+<div>
+  <%= link_to 'カートを空にする', public_cart_items_destroy_all_path(@cart_items), method: :delete, class: 'btn btn-danger' %>
+</div>
+<% sum = 0 %>
+<div class='row'>
+    <table border="1">
+      <tr>
+        <th>商品名</th>
+        <th>単価（税抜）</th>
+        <th>数量</th>
+        <th>小計</th>
+      </tr>
+      <tb>
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.price.to_s(:delimited) %></td>
+            <td>
+              <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), local:true do |f| %>
+                <%= f.select :count, options_for_select((1..10).to_a), include_blank: "#{cart_item.count}" %>
+                <%= f.submit '変更', class: 'btn btn-success btn-block' %>
+              <% end %>
+            </td>
+            <td><%= ((cart_item.item.price*1.10)*(cart_item.count)).to_i %></td>
+            <td>
+              <%= link_to '削除する', public_cart_item_path(cart_item.id), method: :delete, class: 'btn btn-danger btn-block' %>
+            </td>
+          </tr>
+<% sum += ((cart_item.item.price*1.10)*(cart_item.count)).to_i %>
+        <% end %>
+      </tb>
+
+    </table>
+    <div class="col-md-2 offset-md-1">
+      <%= link_to '買い物を続ける', root_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="col-sm-3 pull-right billing">
+      <table class="table table-bordered text-right">
+        <thead>
+          <tr>
+            <td class="text-left">合計金額</td>
+            <td class="text-left">
+              ¥<%= sum %>
+  </div>
+</div>
