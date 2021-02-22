@@ -15,7 +15,7 @@
             <%= link_to image_tag('item-rist-btn.png',:size => '100x58'), public_items_path, class:"d-none d-lg-block nav-link mr-3" %>
           </li>
           <li class="nav-item">
-            <%= link_to image_tag('cart-btn.png',:size => '100x58'), class: 'd-none d-lg-block nav-link mr-3'%>
+            <%= link_to image_tag('cart-btn.png',:size => '100x58'), public_cart_items_path, class: 'd-none d-lg-block nav-link mr-3'%>
           </li>
           <li class="nav-item">
             <%= link_to image_tag('logout-btn.png',:size => '100x58'), destroy_customer_session_path, method: :delete,class: 'd-none d-lg-block nav-link' %>
@@ -34,7 +34,7 @@
             <%= link_to image_tag('janre-btn.png',:size => '100x58'), admin_genres_path, class: 'd-none d-lg-block nav-link mr-3' %>
           </li>
           <li class="nav-item">
-            <%= link_to image_tag('logout-btn.png',:size => '100x58'), admin_registration_path, method: :delete,class: 'd-none d-lg-block nav-link' %>
+            <%= link_to image_tag('logout-btn.png',:size => '100x58'), destroy_admin_session_path, method: :delete,class: 'd-none d-lg-block nav-link' %>
           </li>
         <% else %>
           <li class="nav-item">
