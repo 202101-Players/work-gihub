@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
   scope module: :admin do
-    devise_for :admins
+    devise_for :admins, skip: :all
+    devise_scope :admin do
+      get 'admin/sign_in' => 'sessions#new', as: :new_admin_session
+      post 'admin/sign_in' => 'sessions#create', as: :admin_session
+      delete 'admin/sign_out' => 'sessions#destroy', as: :destroy_admin_session
   end
+end
 
 
 
