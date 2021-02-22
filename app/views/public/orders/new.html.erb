@@ -1,20 +1,21 @@
 <h2>注文情報入力</h2>
-<%= form_with model: @order, local: true, url: public_orders_comfirm_path do |f| %>
+<%= form_with model: @order, local: true, url: public_order_confirm_path ,method: :get do |f| %>
+
 
 <h4>支払い方法</h4>
 
 <div class="field">
-  <%= f.radio_button :payment_method, 0, checked: "checked"%> クレジットカード
+  <%= f.radio_button :payment_method, "クレジットカード", checked: "checked"%> クレジットカード
 </div>
 
 <div class="field">
-  <%= f.radio_button :payment_method, 1, checked: ""%> 銀行振込
+  <%= f.radio_button :payment_method, "銀行振込", checked: ""%> 銀行振込
 </div>
 
 <h4>お届け先</h4>
 
 <div class="field">
-  <%= f.radio_button :address, 1 %> ご自身の住所
+  <%= f.radio_button :address_option, 0 %> ご自身の住所
   <%= current_customer.postal_code%>
   <%= current_customer.address%>
   <%= current_customer.last_name%>
@@ -27,7 +28,7 @@
   <% puts "-----------------------" %>
   <% p current_customer.addresses %>
   <% puts "-----------------------" %>
-  <%= f.collection_select :order_address , current_customer.addresses, :id, :address , :include_blank => "選択してください" %>
+  <%= f.collection_select :address , current_customer.addresses, :id, :address , :include_blank => "選択してください" %>
 
   <br>
   <%= f.radio_button :address_option, 2 %>
