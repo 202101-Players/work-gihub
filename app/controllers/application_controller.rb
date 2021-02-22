@@ -10,7 +10,25 @@ class ApplicationController < ActionController::Base
       admin_orders_path
     end
   end
-  
+
+  def after_sign_up_path_for(resource)
+    flash[:notice] = "登録に成功しました"
+    case resource
+    when Customer
+      root_path
+    when Admin
+      admin_orders_path
+    end
+  end
+
+  def after_sign_out_path_for(resource)
+    if admin_signed_in?
+      new_admin_session_path
+    else
+      root_path
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
