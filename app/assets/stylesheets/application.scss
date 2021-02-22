@@ -29,28 +29,45 @@ body {
 }
 
 // customer-registration.new
-.d-inline-block {
-  .d-flex {
-    .title {
-      width: 200px;
-      margin-right: 2rem;
-    }
+.d-flex {
+  .title {
+    width: 180px;
+    margin-right: 10px;
   }
 }
 
-.d-inline-block {
-  .d-flex {
-    .label {
-      width: 50px;
-      margin-right: 0.5rem;
-    }
+.d-flex {
+  .label {
+    width: 50px;
+    margin-right: 10px;
   }
 }
 
-.d-inline-block {
-  .d-flex {
-    .form {
-      width: 200px;
-    }
+.d-flex {
+  .form {
+    width: 250px;
+    margin-right: 50px;
   }
 }
+
+.d-flex {
+  .form2 {
+    width: 250px;
+  }
+}
+
+.d-flex {
+  .form3 {
+    width: 610px;
+  }
+}
+
+.form-control::placeholder{
+  color: #d4d9dc;
+}
+.d-flex {
+  .btn-size {
+    width: 200px
+  }
+}
+// customer-registration.newここまで

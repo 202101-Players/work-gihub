@@ -20,7 +20,11 @@
           <td><%= item.id %></td>
           <td><%= link_to item.name, admin_item_path(item) %></td>
           <td><%= item.introduction %></td>
-          <td><%= item.genre_id %></td>
+          
+          <% ganre.item.each do |ganre| %>
+           <td><%= ganre.name %></td>
+          <% end %>
+          
           <td><%= item.price %></td>
           <td>
           <% if item.is_active == true %>
