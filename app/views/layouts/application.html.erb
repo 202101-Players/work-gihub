@@ -13,14 +13,14 @@
     <div>
       <%= render "layouts/header" %>
     </div>
-    <main>
+    
       <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>
       </div>
       <% end %>
       <p id="notice"><%= yield %></p>
-    </main>
+
     <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -1,5 +1,5 @@
 <div class="container px-5 px-sm-0">
- <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
+ <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細 </h2>
         <table class="table table-striped">
           <tr>
            <th>会員ID</th>
@@ -13,23 +13,24 @@
            <th colspan="8"></th>
           </tr>
            <tr>
-          <td><%= customer.last_name %> <%= customer.first_name %></td>
-          <td><%= customer.last_name_kana %> <%= customer.first_name_kana %></td>
-          <td><%= customer.postal_code %></td>
-          <td><%= customer.address %></td>
-          <td><%= telephone_number %></td>
-          <td><%= customer.email %></td>
-          <td><% if customer.is_deleted == true %>
-            <%= puts "有効" %>
+          <td><%= @customer.id %></td>
+          <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+          <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+          <td><%= @customer.postal_code %></td>
+          <td><%= @customer.address %></td>
+          <td><%= @customer.telephone_number %></td>
+          <td><%= @customer.email %></td>
+          <td><% if @customer.is_deleted == true %>
+            <%= "有効" %>
             <% else %>
-            <%= puts "退会" %>
+            <%= "退会" %>
              </td> 
             <% end %>
            </tr>
-          <% end %>
+          
          </table>
-  </div>
-  <%= link_to '編集する',  edit_admin_customer(customer) %>
-  <%= link_to '注文履歴一覧を見る'%>
+  
+  <%= link_to '編集する', edit_admin_customer_path(@customer) %>
+  <%= link_to '注文履歴一覧を見る',admin_orders_path %>
   
 </div>
