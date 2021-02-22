@@ -36,10 +36,10 @@ end
      delete '/cart_items/destroy_all', to: 'cart_items#destroy_all'
     resources :cart_items,only: [:index, :update, :create, :destroy]
 
-
-    resources :orders,only: [:new, :create, :index, :show]
+      post '/order/confirm', to: 'orders#confirm'
       get '/orders/thanks', to: 'orders#thanks'
-      get '/order/confirm', to: 'orders#confirm'
+    resources :orders,only: [:new, :create, :index, :show]
+      
 
     resources :addresses,except: [:show, :new]
 
