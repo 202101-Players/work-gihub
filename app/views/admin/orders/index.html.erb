@@ -15,19 +15,17 @@
              <%= order.customer.last_name %></td>
              <% end %>
              <td><%= order.order_items.all.sum(:amount) %>個 </td>
-             <td><% if order.status == 0 then %>
-                 <%= "入金待ち" %>
-                 <% elsif order.status  == 1 then %>
-                 <%= "入金確認" %>
-                 <% elsif order.status  == 2 then %>
-                 <%= "制作中" %>
-                 <% elsif order.status  == 3 then %>
-                 <%= "発送準備中" %>
-                 <% else %>
-                 <%= "発送済み" %>
-             </td> 
-               <% end %>
+
+             <% order.order_items.each do |order_item| %>
+　　　　　　 <td> <%= order_item.making_status_i18n %><br>
+             </td>
+
+             <% end %>
+
+             <% end %>
+
+
+
            </tr>
-          <% end %>
          </table>
 </div>
