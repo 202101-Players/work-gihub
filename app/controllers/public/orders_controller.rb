@@ -39,6 +39,7 @@ class Public::OrdersController < ApplicationController
     def create
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
+      #p @order
       @order.save
       @carts = current_customer.cart_items
       total_payment = 0
@@ -63,9 +64,12 @@ class Public::OrdersController < ApplicationController
     def thanks
 
     end
-    
 
 
+    def index
+      @orders = current_customer.orders
+      p @orders
+    end
 
     private
 
@@ -74,7 +78,7 @@ class Public::OrdersController < ApplicationController
     end
 
     def order_item_params
-      params.require(:order_item).permit(:amount, :price, )
+      params.require(:order_item).permit(:amount, :price )
     end
 
 end
