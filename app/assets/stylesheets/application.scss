@@ -25,7 +25,7 @@ body {
 //aboutのcss
 .about-image{
   width: 100%;
-  height: 124px;
+  height: 150px;
   background: url("cakes-1283821_960_720.png");
   background-size: cover;
   background-position: center;
@@ -75,6 +75,50 @@ body {
   }
 }
 // customer-registration.newここまで
+
+//商品一覧画像のclass
+.img_wrap {
+  width: 200px;
+  height: 130px;
+  overflow: hidden;
+}
+
+.img_wrap img {
+  width: 100%;
+  display: block;
+  transition: 0.5s;
+}
+
+.img_wrap img:hover {
+  transform: scale(1.2);
+  transition-duration: 0.5s;
+}
+//商品一覧画像のclassここまで
+
+//商品詳細画像のclass
+.item-show-img>img {
+    width: 100%;
+    height: auto;
+}
+
+//kaminari用のcss
+.pagination>li>a {
+  border: none;
+  color: #696969;
+  font-weight: bold;
+}
+
+.page-item.active .page-link  {
+  background-color: #ff667d;
+  border-radius: 25px;
+}
+
+.pagination>li>a:hover {
+  color: #ff3352;
+  background: #ffb6c1;
+  border-radius: 25px;
+}
+//kaminari用のcssここまで
 
 //footerのcss
 .wrapper {

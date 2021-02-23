@@ -1,27 +1,29 @@
 <div class="container">
   <div class="row">
-    <%= attachment_image_tag @item, :image, :fill, 200, 200, format: 'jpeg' %>
-    <div class="col-md-6">
-      <div>
-        <h2>
-          <%= @item.name %>
-        </h2>
+    <div class="mx-auto mt-5 col-md-9">
+      <div class="d-flex flex-nowrap">
+        <div class="col-md-4 d-inline-block item-show-img mx-3">
+          <%= attachment_image_tag(@item, :image, fallback: "no_image.jpg", size:'360x240') %>
+        </div>
+        <div class="col-md-8 mx-3">
+          <h2 class="field text-dark">
+            <strong><%= @item.name %></strong>
+          </h2>
+          <h3 class="field mb-5">
+            <%= @item.introduction %>
+          </h3>
+          <h4 class="field text-dark">
+            ¥<%= @item.price %>
+          </h4>
+          <div class="field">
+            <%= form_with model: @cart_item, url: public_cart_items_path, local:true do |f| %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.select :count, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+              <%= f.submit "カートに入れる", class: "glyphicon glyphicon-shopping-cart btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
       </div>
-    <div class="field">
-          <%= @item.introduction %>
     </div>
-    <div class="field">
-          <%= @item.price %>円
-    </div>
-    <div class="field">
-      <%= form_with model: @cart_item, url: public_cart_items_path, local:true do |f| %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.select :count, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-        <%= f.submit "カートに入れる", class: "glyphicon glyphicon-shopping-cart btn btn-success" %>
-      <% end %>
-    </div>
-    </div>
-    </div>
-
   </div>
 </div>
