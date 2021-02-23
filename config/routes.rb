@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-  end
   scope module: :admin do
-    devise_for :admins
+    devise_for :admins, skip: :all
+    devise_scope :admin do
+      get 'admin/sign_in' => 'sessions#new', as: :new_admin_session
+      post 'admin/sign_in' => 'sessions#create', as: :admin_session
+      delete 'admin/sign_out' => 'sessions#destroy', as: :destroy_admin_session
   end
+end
+
+
 
   root 'homes#top'
 
@@ -21,7 +20,7 @@ Rails.application.routes.draw do
 
     resources :items,except: [:destroy]
 
-    resources :orders,only: [:index, :show]
+    resources :orders,only: [:index, :show, :update]
      patch '/admin/orders/:order_id/order_details/:id', to: 'order_details#update'
   end
 
@@ -34,19 +33,20 @@ Rails.application.routes.draw do
 
     resources :items,only: [:index, :show]
 
+     delete '/cart_items/destroy_all', to: 'cart_items#destroy_all'
     resources :cart_items,only: [:index, :update, :create, :destroy]
-      delete '/cart_items/destroy_all', to: 'cart_items#destroy_all'
 
-    resources :orders,only: [:new, :create, :index, :show]
+      post '/order/confirm', to: 'orders#confirm'
       get '/orders/thanks', to: 'orders#thanks'
-      post '/orders/comfirm', to: 'orders#comfirm'
+    resources :orders,only: [:new, :create, :index, :show]
+      
 
     resources :addresses,except: [:show, :new]
 
 
   end
 
-  scope module: :customers do
+    scope module: :customers do
     devise_for :customers
   end
 
