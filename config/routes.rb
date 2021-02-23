@@ -21,7 +21,7 @@ end
     resources :items,except: [:destroy]
 
     resources :orders,only: [:index, :show, :update]
-     patch '/admin/orders/:order_id/order_details/:id', to: 'order_details#update'
+     patch '/admin/orders/:order_id/order_details/:id', to: 'order_items#update'
   end
 
 
