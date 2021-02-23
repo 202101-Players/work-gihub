@@ -21,16 +21,18 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_option] == "1"
-      @sta = params[:order][:order_address]
+      @order_address = current_customer.addresses.find(params[:order][:addresses])
       @order.postal_code = @order_address.postal_code
-      @order.address = @order_address.adenddress
-      @order.dear_name = @order_address.dear_name
+      @order.address = @order_address.address
+      @order.name = @order_address.name
 
     elsif params[:order][:address_option] == "2"
       @order.postal_code = params[:order][:postal_code]
-      @order.address = params[:order][:order_address]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
     end
     end
 
@@ -39,15 +41,21 @@ class Public::OrdersController < ApplicationController
       @order.customer_id = current_customer.id
       @order.save
       @carts = current_customer.cart_items
+      total_payment = 0
         @carts.each do |f|
           new_order_item = OrderItem.new
           new_order_item.order_id = @order.id
           new_order_item.item_id = f.item_id
           new_order_item.amount = f.count
           new_order_item.price = f.item.price*1.10
+          total_payment += new_order_item.price * new_order_item.amount
           new_order_item.making_status = 0
           new_order_item.save
         end
+      @order.ship_cost = 800
+      total_payment += @order.ship_cost
+      # @order.total_payment = total_payment
+      @order.update_attributes(total_payment: total_payment)
       @carts.destroy_all
       redirect_to public_orders_thanks_path
     end
@@ -62,7 +70,7 @@ class Public::OrdersController < ApplicationController
     private
 
     def order_params
-      params.require(:order).permit(:payment_method, :postal_code, :address, :ship_cost, :total_payment )
+      params.require(:order).permit(:payment_method, :postal_code, :address, :ship_cost, :total_payment,:addresses, :name)
     end
 
     def order_item_params
