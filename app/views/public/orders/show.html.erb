@@ -34,7 +34,7 @@
       <table class="table table-bordered">
         <tr>
           <td class="table-active">商品合計</td>
-          <td><%= @order.total_payment %>円</td>
+          <td><%= @order.total_payment-800 %>円</td>
         </tr>
         <tr>
           <td class="table-active">配送料</td>
@@ -42,7 +42,7 @@
         </tr>
         <tr>
           <td class="table-active"><strong>ご請求額</strong></td>
-          <td><%= ((@order.total_payment)+(@order.ship_cost)) %>円</td>
+          <td><%= ((@order.total_payment)+(@order.ship_cost))-800 %>円</td>
         </tr>
       </table>
     </div>
