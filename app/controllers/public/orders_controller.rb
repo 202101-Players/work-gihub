@@ -39,7 +39,7 @@ class Public::OrdersController < ApplicationController
     def create
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
-      p @order
+      #p @order
       @order.save
       @carts = current_customer.cart_items
       total_payment = 0
