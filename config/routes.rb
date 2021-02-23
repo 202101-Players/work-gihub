@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   scope module: :admin do
     devise_for :admins, skip: :all
     devise_scope :admin do
@@ -20,7 +20,7 @@ end
 
     resources :items,except: [:destroy]
 
-    resources :orders,only: [:index, :show]
+    resources :orders,only: [:index, :show, :update]
      patch '/admin/orders/:order_id/order_details/:id', to: 'order_details#update'
   end
 
@@ -35,17 +35,17 @@ end
 
      delete '/cart_items/destroy_all', to: 'cart_items#destroy_all'
     resources :cart_items,only: [:index, :update, :create, :destroy]
-      
 
-    resources :orders,only: [:new, :create, :index, :show]
+      post '/order/confirm', to: 'orders#confirm'
       get '/orders/thanks', to: 'orders#thanks'
-      post '/orders/comfirm', to: 'orders#comfirm'
+    resources :orders,only: [:new, :create, :index, :show]
+      
 
     resources :addresses,except: [:show, :new]
 
 
   end
-  
+
     scope module: :customers do
     devise_for :customers
   end
