@@ -39,7 +39,7 @@ end
       post '/order/confirm', to: 'orders#confirm'
       get '/orders/thanks', to: 'orders#thanks'
     resources :orders,only: [:new, :create, :index, :show]
-      
+
 
     resources :addresses,except: [:show, :new]
 

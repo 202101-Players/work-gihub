@@ -39,6 +39,7 @@ class Public::OrdersController < ApplicationController
     def create
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
+      @order.status = 0
       #p @order
       @order.save
       @carts = current_customer.cart_items
@@ -69,6 +70,10 @@ class Public::OrdersController < ApplicationController
     def index
       @orders = current_customer.orders
       p @orders
+    end
+
+    def show
+
     end
 
     private

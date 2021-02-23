@@ -1,6 +1,6 @@
 class Admin::OrderItemsController < ApplicationController
   # 使用しない↓
-  
+
   # def index
   #   @order_items = Order_items.all
   # end
@@ -8,7 +8,7 @@ class Admin::OrderItemsController < ApplicationController
   # def show
   #   @order = OrderItems.find(params[:id])
   # end
-  
+
   # private
 
   # def order_params
