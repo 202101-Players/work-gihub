@@ -1,5 +1,6 @@
 class OrderItem < ApplicationRecord
   belongs_to :order
+  belongs_to :item
 
    enum making_status:{ non: 0, stop:1, ing:2, finish:3 }
 
