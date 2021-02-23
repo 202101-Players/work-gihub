@@ -10,17 +10,19 @@
   </head>
 
   <body>
-    <div>
-      <%= render "layouts/header" %>
-    </div>
-    
-      <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
+    <div class="wrapper">
+      <div>
+        <%= render "layouts/header" %>
       </div>
-      <% end %>
-      <p id="notice"><%= yield %></p>
-
-    <%= render 'layouts/footer' %>
+      
+        <% if flash[:notice] %>
+        <div class="flash">
+          <%= flash[:notice] %>
+        </div>
+        <% end %>
+        <p id="notice"><%= yield %></p>
+  
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

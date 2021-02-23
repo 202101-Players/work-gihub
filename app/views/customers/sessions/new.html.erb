@@ -1,26 +1,56 @@
-<h2>ログイン</h2>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-10 px-5 px-sm-0">
+      
+      <div class=" mt-4 mb-5">
+        <h4 class="px-3 font-weight-bold d-inline-block", style="background-color: #eaf4fc">ログイン</h4><br>
+      </div>
+      
+      <div class=" mx-5 my-3">
+        <h5 class="px-3 d-inline-block", style="background-color: #eaf4fc">会員の⽅はこちらからログイン</h5>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="d-flex flex-row">
+        <div class="title" style="margin-left: 140px;">
+          <p>メールアドレス</p>
+        </div>
+        
+        <div class="d-flex">
+          <%= f.label :" ", class:"label" %>
+          <%= f.text_field :email, autofocus: true, autocomplete:"email", placeholder:"sample@example.com", class:'form form-control', style:'width: 500px;' %>
+        </div>
+      </div>
+      
+      <div class="d-flex flex-row mt-3">
+        <div class="title" style="margin-left: 140px;">
+          <p>パスワード</p>
+        </div>
+        
+        <div class="d-flex">
+          <%= f.label :" ", class:"label" %>
+          <%= f.text_field :password, autofocus: true, autocomplete:"current-password", class:'form form-control', style:'width: 500px;' %>
+        </div>
+      </div>
+      
+      <div class="d-flex flex-row mt-3">
+        <div class="title" style="margin-left: 140px;">
+          <p></p>
+        </div>
+        
+        <div class="d-flex my-5">
+          <%= f.label :" ", class:"label" %>
+          <button type="submit" class="btn btn-primary btn-block btn-size">ログイン</button>
+        </div>
+      </div>
+      <% end %>
+      
+      <div class=" mx-5 my-3">
+        <h5 class="px-3 d-inline-block", style="background-color: #eaf4fc">会員登録がお済みでない⽅</h5>
+      </div>
+      
+      <p class="mt-4", style="margin-left: 120px;"><%= link_to "こちら", new_customer_session_path, class:"mx-3 pl-5" %>から新規登録を行ってください。</p>
 
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
-<% end %>
-
-<%= render "customers/shared/links" %>
+</div>
