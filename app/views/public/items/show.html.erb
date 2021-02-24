@@ -11,7 +11,7 @@
           </h2>
           <h3 class="card-subtitle mb-5"><%= @item.introduction %></h3>
           <div class="card-text">
-            <h4 class="field text-dark mb-4">¥<%= @item.price %>
+            <h4 class="field text-dark mb-4">¥<%= (@item.price*1.10).to_i %>
             　<label style="font-size: small; padding-top: 6px; margin-left: 8px;">(税込)</label>
             </h4>
           </div>
