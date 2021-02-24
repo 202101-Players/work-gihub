@@ -10,12 +10,25 @@ class Admin::OrderItemsController < ApplicationController
       @orderitem = OrderItem.find(params[:id])
       @orderitem.update(order_item_params)
       if @orderitem.making_status == 2
-         @order.update(status: 2)
-      elsif  @orderitem.making_status == 3
-         @order.update(status: 3)
+         @orderitem.order.update(status: 2)
       end
-      redirect_to  admin_orders_path, success: '登録に成功しました'
-   
+      
+      #全てのorder_itemが制作完了になったら注文ステータスを変更
+      @order = Order.find(params[:order_id])
+      
+      is_making_status = true #making_statusがすべて3であればtrue,そうでなければfalse
+      @order.order_items.each do |order_item|
+        if order_item.making_status != 3
+           is_making_status = false
+        end
+      end
+      
+      if is_making_status
+        @orderitem.order.update(status: 3)
+      end
+      
+      redirect_to  admin_orders_path
+      
     end
    
    
