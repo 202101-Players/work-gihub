@@ -6,8 +6,12 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    if @item.genre_id == nil
+      redirect_to new_admin_item_path
+    else
     @item.save!
     redirect_to admin_item_path(@item)
+    end
   end
 
   def index
