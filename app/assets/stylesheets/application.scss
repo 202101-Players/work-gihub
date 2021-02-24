@@ -139,11 +139,20 @@ footer {
 }
 //footerここまで
 
+// アイコンの影
 .col {
   .btn {
     .fontawesome-class {
     border-radius: 30px;
     box-shadow: 1px 2px 0px 0px rgba(0,0,0,0.64);
+    }
+  }
+}
+// アイコンの影ここまで
+.row {
+  .d-flex {
+    .textarea {
+      height: 130px;
     }
   }
 }
