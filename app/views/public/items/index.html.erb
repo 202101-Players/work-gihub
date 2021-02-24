@@ -1,21 +1,38 @@
-<div class="container">
-  <h2>
-  商品一覧
-  <span>全<%= @items.total_count %>件</span>
-</h2>
-  <div class="row">
+<div class="kaminari-kotei">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-10">
+        <div class="mt-4 mb-3 mr-2 d-flex">
+          <h3 class="font-weight-bold mr-3">商品一覧</h3>
+          <span class="py-2">(全<%= @items.total_count %>件)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row", style="margin-bottom: 30px; padding: 0px 130px;">
       <% @items.each do |item| %>
-      <div class="col-md-3">
-        <div><%= attachment_image_tag item, :image, format: 'jpeg', size: "180x130" %></div>
-        <div><%= link_to item.name, public_item_path(item.id) %></div>
+      <div class="d-block mx-auto mb-4">
+        
+        <div class="mb-3 img_wrap">
+          <%= link_to attachment_image_tag(item, :image, fallback: "no_image.jpg", size:'200x130'), public_item_path(item[:id]), class:"img" %>
+        </div>
+        <div class="font-weight-bold">
+          <%= item.name %>
+        </div>
+        
         <% if item.is_active == true %>
-        <p>¥<%= item.price.to_s(:delimited) %></p>
+          <p>¥<%= item.price.to_s(:delimited) %></p>
         <% elsif item.is_active == false %>
-        <p>売り切れ中</p>
+          <p>売り切れ中</p>
         <% end %>
+        
       </div>
       <% end %>
+    </div>
+  
     <div class="text-center"><%= paginate(@items) %></div>
+    
   </div>
 </div>
-

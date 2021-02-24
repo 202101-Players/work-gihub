@@ -39,6 +39,7 @@ class Public::OrdersController < ApplicationController
     def create
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
+      @order.status = 0
       #p @order
       @order.save
       @carts = current_customer.cart_items
@@ -65,16 +66,19 @@ class Public::OrdersController < ApplicationController
 
     end
 
-
     def index
       @orders = current_customer.orders
-      p @orders
+    end
+
+    def show
+      @order = Order.find(params[:id])
+      @order_items = @order.order_items
     end
 
     private
 
     def order_params
-      params.require(:order).permit(:payment_method, :postal_code, :address, :ship_cost, :total_payment,:addresses, :name)
+      params.require(:order).permit(:payment_method, :postal_code, :address, :ship_cost, :total_payment, :name)
     end
 
     def order_item_params

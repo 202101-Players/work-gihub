@@ -1,10 +1,9 @@
 class Admin::OrdersController < ApplicationController
-  
+
   def index
     @orders = Order.all
-    # @order = Order.find(params[:id])
   end
-  
+
    def show
     # admin/orders/100
     # parameters: {"id" => "100"}
@@ -21,7 +20,6 @@ class Admin::OrdersController < ApplicationController
     redirect_to  admin_orders_path, success: '登録に成功しました'
    end
 
-  
   private
 
   def order_params
