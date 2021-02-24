@@ -8,7 +8,6 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.new(genre_params)
     @genre.save
     redirect_back(fallback_location: root_path)
-    
   end
   
   
