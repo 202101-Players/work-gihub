@@ -6,17 +6,22 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
+    if @cart_item.count == nil
+      redirect_back fallback_location: @cart_item.item
+    else
     @cart_items = current_customer.cart_items.all
     @cart_items.each do |cart_item|
       if cart_item.item_id == @cart_item.item_id
         new_count = cart_item.count + @cart_item.count
         cart_item.update_attribute(:count, new_count)
         @cart_item.delete
-      end 
+      end
     end
     @cart_item.save
     redirect_to public_cart_items_path
+    end
   end
+
 
   def update
     @cart_item = CartItem.find(params[:id])
