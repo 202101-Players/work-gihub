@@ -2,10 +2,10 @@
   <div class="col-12">
     <h2>注文履歴詳細</h2>
     <%= form_with model: @order, url:admin_order_path, local: true do |f| %>
-    <table class="table table-borderless">
+    <table  width="500px",class="table table-borderless">
       <tr>
-        <td>購入者</td>
-        <td>
+        <td width="150px">購入者</td>
+        <td width="200px">
           <%= link_to admin_customer_path(@order.customer_id) do %>
           <%= @order.customer.last_name + @order.customer.first_name %>
           <% end %></td>
@@ -35,7 +35,7 @@
           <%= f.select :status, {'入金待ち': 0, '入金確認': 1, '制作中': 2, '発送準備中': 3, '発送済み': 4}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
         </td>
         <td>
-          <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
+          <%= f.submit '更新', class: 'btn btn-success btn-block' %>
         </td>
       </tr>
 
@@ -47,12 +47,12 @@
       <div class="col-8">
         <table class="table table-bordered table-sm">
           <tr>
-           <th>商品名</th>
-           <th>単価（税込）</th>
-           <th>数量</th>
-           <th>小計</th>
-           <th>制作ステータス</th>
-           <th colspan="5"></th>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+            <th colspan="5"></th>
           </tr>
           <% @order.order_items.each do |order_item| %>
           <tr>
@@ -63,8 +63,8 @@
             <td>
               <%= form_with model: order_item , url:admin_path(@order, order_item), local: true do |f| %>
               <%= f.select :making_status, {'制作不可': 0, '制作待ち': 1, '制作中': 2, '制作完了': 3}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %> 
-            <td> 
-              <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
+            <td>
+              <%= f.submit '更新', class: 'btn btn-success btn-block' %>
               <% end %>
               </td>
             </td> 
