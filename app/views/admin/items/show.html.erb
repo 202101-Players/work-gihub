@@ -1,0 +1,52 @@
+<div class="container">
+  <div class=" mt-4 mb-5">
+    <h4 class="px-3 font-weight-bold d-inline-block", style="background-color: #eaf4fc">商品詳細</h4><br>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <%= attachment_image_tag @item, :image, size:'300x200' %>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td style="width: 140px; height: 70px;">商品名</td>
+          <td><p class="font-weight-bolder"><%= @item.name %></p></td>
+        </tr>
+        <tr>
+          <td style="width: 140px; height: 70px;">商品説明</td>
+          <td><p class="font-weight-bolder"><%= @item.introduction %></p></td>
+        </tr>
+        <tr>
+          <td style="width: 140px; height: 70px;">ジャンル</td>
+          <td><p class="font-weight-bolder"><%= @item.genre.name %></p></td>
+        </tr>
+        <tr>
+          <td style="width: 140px; height: 70px;">
+            税込価格<br>
+            (税抜価格)
+          </td>
+          <td><p class="font-weight-bolder"><%= (@item.price*1.10).to_i %>(<%= @item.price %>)円</P></td>
+        </tr>
+        <tr>
+          <td>販売ステータス</td>
+          <td>
+            <% if @item.is_active == true %>
+          	 <div class="text-success mx-3 text-success font-weight-bolder", style="font-size: 23px;"><%= "販売中" %></div>
+            <% else %>
+          	 <div class="text-success mx-3  text-success font-weight-bolder", style="font-size: 23px;"><%= "販売停止中" %></div>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+
+
+    </div>
+
+  </div>
+  <div class="text-center my-3"><%= link_to '編集する', edit_admin_item_path(@item.id), class: 'btn btn-success btn-lg' %></div>
+</div>
+

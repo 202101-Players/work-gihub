@@ -16,3 +16,143 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+body {
+  font-family: Meiryo, Georgia, "Time New Roman", Times, serif;
+  color: #555;
+}
+
+//aboutのcss
+.about-image{
+  width: 100%;
+  height: 150px;
+  background: url("cakes-1283821_960_720.png");
+  background-size: cover;
+  background-position: center;
+}
+//aboutここまで
+
+// customer-registration.newのcss
+.d-flex {
+  .title {
+    width: 180px;
+    margin-right: 10px;
+  }
+}
+
+.d-flex {
+  .label {
+    width: 50px;
+    margin-right: 10px;
+  }
+}
+
+.d-flex {
+  .form {
+    width: 250px;
+    margin-right: 50px;
+  }
+}
+
+.d-flex {
+  .form2 {
+    width: 250px;
+  }
+}
+
+.d-flex {
+  .form3 {
+    width: 610px;
+  }
+}
+
+.form-control::placeholder{
+  color: #d4d9dc;
+}
+.d-flex {
+  .btn-size {
+    width: 200px
+  }
+}
+// customer-registration.newここまで
+
+//商品一覧画像のclass
+.img_wrap {
+  width: 200px;
+  height: 130px;
+  overflow: hidden;
+}
+
+.img_wrap img {
+  width: 100%;
+  display: block;
+  transition: 0.5s;
+}
+
+.img_wrap img:hover {
+  transform: scale(1.2);
+  transition-duration: 0.5s;
+}
+//商品一覧画像のclassここまで
+
+//商品詳細画像のclass
+.item-show-img>img {
+    width: 100%;
+    height: auto;
+}
+
+//kaminari用のcss
+.pagination>li>a {
+  border: none;
+  color: #696969;
+  font-weight: bold;
+}
+
+.page-item.active .page-link  {
+  background-color: #ff667d;
+  border-radius: 25px;
+}
+
+.pagination>li>a:hover {
+  color: #ff3352;
+  background: #ffb6c1;
+  border-radius: 25px;
+}
+//kaminari用のcssここまで
+
+//footerのcss
+.wrapper {
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+
+footer {
+  width: 100%;
+  background-color:#f5ecf4;
+  text-align: center;
+  padding: 30px 0;
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
+//footerここまで
+
+// アイコンの影
+.col {
+  .btn {
+    .fontawesome-class {
+    border-radius: 30px;
+    box-shadow: 1px 2px 0px 0px rgba(0,0,0,0.64);
+    }
+  }
+}
+// アイコンの影ここまで
+.row {
+  .d-flex {
+    .textarea {
+      height: 130px;
+    }
+  }
+}

@@ -1,0 +1,94 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-10 px-5 px-sm-0">
+    <%= form_with model: @customer, url: public_customers_path, local:true do |f| %>
+    <%= render "customers/shared/error_messages", resource: @customer %>
+      <div class="d-inline-block m-5">
+        <h4 class="px-3 font-weight-bold", style="background-color: #eaf4fc">会員情報編集</h4>
+      </div>
+
+      <div class="d-flex flex-row mt-1">
+        <div class="title">
+          <p>名前</p>
+        </div>
+
+        <div class="d-flex ">
+          <%= f.text_field :last_name, autofocus: true, autocomplete:"last_name", placeholder:"令和", class:'form form-control' %>
+        </div>
+        <div class="d-flex">
+          <%= f.text_field :first_name, autofocus: true, autocomplete:"first_name", placeholder:"道子", class:'form2 form-control' %>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row mt-1">
+        <div class="title">
+          <p>フリガナ</p>
+        </div>
+
+        <div class="d-flex ">
+          <%= f.text_field :last_name_kana, autofocus: true, autocomplete:"last_name", placeholder:"レイワ", class:'form form-control' %>
+        </div>
+        <div class="d-flex">
+          <%= f.text_field :first_name_kana, autofocus: true, autocomplete:"first_name", placeholder:"ミチコ", class:'form2 form-control' %>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row mt-1">
+        <div class="title">
+          <p>郵便番号</p>
+        </div>
+
+        <div class="d-flex ">
+          <%= f.text_field :postal_code, autofocus: true, autocomplete:"postal_code", placeholder:"0000000", class:'form form-control' %>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row mt-1">
+        <div class="title">
+          <p>住所</p>
+        </div>
+
+        <div class="d-flex ">
+          <%= f.text_field :address, autofocus: true, autocomplete:"address", placeholder:"東京都渋⾕区代々⽊神園町0-0", class:'form3 form-control' %>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row mt-1">
+        <div class="title">
+          <p>電話番号</p>
+        </div>
+
+        <div class="d-flex ">
+          <%= f.text_field :telephone_number, autofocus: true, autocomplete:"telephone_number", placeholder:"0000000000", class:'form form-control' %>
+        </div>
+      </div>
+      
+      <div class="d-flex flex-row mt-1">
+        <div class="title">
+          <p>メールアドレス</p>
+        </div>
+
+        <div class="d-flex ">
+          <%= f.text_field :email, autofocus: true, autocomplete:"email", placeholder:"sample@example.com", class:'form form-control' %>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row mt-4">
+        <div class="title">
+          <p></p>
+        </div>
+
+        <div class="d-flex">
+          <button type="submit" class="btn btn-success btn-block btn-size mr-5">編集内容を保存</button>
+        </div>
+        
+        <div class="d-flex">
+          <%= link_to "退会する", public_customers_quit_path, class:"btn btn-danger", style:"margin-left: 200px;" %>
+        </div>
+      </div>
+
+    <% end %>
+
+    </div>
+  </div>
+</div>

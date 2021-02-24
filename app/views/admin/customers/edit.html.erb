@@ -1,0 +1,65 @@
+<div class="container px-5 px-sm-0">
+
+ <h2><%= @customer.last_name %> <%= @customer.first_name %>さんの会員情報編集</h2>
+ 
+
+ <%= form_with model: @customer, url: admin_customer_path, method: :patch, local:true do |f| %>
+  <%= render "customers/shared/error_messages", resource: @customer %>
+
+  <div class="field">
+    <%= f.label :"氏名（姓）" %><br/>
+    <%= f.text_field :last_name, autofocus: true, autocomplete:"last_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"氏名（名）" %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete:"first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"フリガナ（セイ）" %><br />
+    <%= f.text_field :last_name_kana, autofocus: true, autocomplete:"last_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"フリガナ（メイ）" %><br />
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete:"first_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"郵便番号" %><br />
+    <%= f.text_field :postal_code, autocomplete: "postal_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"住所" %><br />
+    <%= f.text_field :address, autocomplete: "address"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"電話番号" %><br />
+    <%= f.text_field :telephone_number, autocomplete: "telephone_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"メールアドレス" %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+
+   <div>
+      <%= f.label :"会員ステータス" %><br />
+    <%= f.radio_button :is_deleted, true %>
+    <%= f.label :is_deleted, '有効', value: true %>
+   </div>
+   <div>
+    <%= f.radio_button :is_active, false %>
+    <%= f.label :is_deleted, '退会', value: false %>
+   </div>
+    
+    
+  <%= f.submit '編集内容を保存する',class: "btn btn-success btn-lg" %>
+
+  <%end%>
+  
+</div>

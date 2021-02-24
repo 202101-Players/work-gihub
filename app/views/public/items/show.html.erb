@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto mt-5 col-md-9">
+      <div class="d-flex">
+        <div class="col-md-5 item-show-img mx-3">
+          <%= attachment_image_tag(@item, :image, fallback: "no_image.jpg", size:'360x240') %>
+        </div>
+        <div class="col-md-8 mx-3 card" style="border: 0;">
+          <h2 class="card-title">
+            <strong><%= @item.name %></strong>
+          </h2>
+          <h3 class="card-subtitle mb-5"><%= @item.introduction %></h3>
+          <div class="card-text">
+            <h4 class="field text-dark mb-4">¥<%= (@item.price*1.10).to_i %>
+            　<label style="font-size: small; padding-top: 6px; margin-left: 8px;">(税込)</label>
+            </h4>
+          </div>
+          <div class="field">
+            <%= form_with model: @cart_item, url: public_cart_items_path, local:true do |f| %>
+
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.select :count, options_for_select((1..10).to_a), {include_blank: "個数選択"}, {class:"btn btn-primary dropdown-toggle bg-white mr-5", style: "color: #000; width: 130px; height: 30px; padding: 0;"} %>
+              <%= f.submit "カートに入れる", class: "glyphicon glyphicon-shopping-cart btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

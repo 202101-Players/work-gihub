@@ -1,0 +1,18 @@
+ja:
+  enums:
+    order:
+      status:
+        waiting_for_payment: 入金待ち
+        payment_confirmation: 入金確認
+        production: 制作中
+        ready_to_ship: 発送準備中
+        sent: 発送済み
+
+
+    order_item:
+      making_status:
+        non: 制作不可
+        stop: 制作待ち
+        ing: 制作中
+        finish: 制作完了
+

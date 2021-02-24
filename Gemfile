@@ -65,6 +65,7 @@ gem "devise"
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem 'kaminari'
 
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
@@ -78,3 +79,5 @@ group :test do
   gem "factory_bot_rails"
   gem 'faker'
 end
+
+gem 'enum_help'

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-10'>
+      <div class="jumbotron jumbotron1 mt-4 text-right font-weight-bold", style="color: #000000">
+        <div>
+          <p>ようこそ、ながのCAKEへ！</p>
+          <p>このサイトは、ケーキ販売のECサイトになります。</p>
+          <p>会員でない方も商品の閲覧はできますが、</p>
+          <p>購入には会員登録が必要になります。</p>
+        </div>
+      </div>
+        <!--ここから新着商品の一部を表示-->
+        <div class="row">
+          <h3 class="font-weight-bold">新着商品</h3>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-10">
+    <table class='table'>
+      <!--↓はitemのコントローラとかができてから代入して弄ってください-->
+      <% Item.last(4).reverse.each do |item| %>
+        <tr>
+          <td rowspan="4">
+            <div class="mb-3 img_wrap"><%= link_to attachment_image_tag(item, :image, fallback: "no_image.jpg", size:'200x130'), public_item_path(item[:id]), class:"img" %></div>
+            <div class="mb-1 font-weight-bold pl-2"><%= item.name %></div>
+            <div class="font-weight-bold pl-2">¥<%= item.price %></div>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+      <div class="text-right">
+      <%= link_to ' 全ての商品を見る >', public_items_path %>
+      </div>
+    </div>
+  </div>
+</div>

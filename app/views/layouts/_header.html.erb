@@ -1,0 +1,69 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#f5ecf4;">
+    <div class="container">
+      <a class="navbar-brand" href="/"><%= image_tag 'logo.png', :size => '120x120' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mx-ou" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li class="nav-item">
+            <%= link_to image_tag('mypage-btn.png',:size => '100x58'), public_customers_my_page_path(current_customer),class: 'd-none d-lg-block nav-link mr-3' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag('item-rist-btn.png',:size => '100x58'), public_items_path, class:"d-none d-lg-block nav-link mr-3" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag('cart-btn.png',:size => '100x58'), public_cart_items_path, class: 'd-none d-lg-block nav-link mr-3'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag('logout-btn.png',:size => '100x58'), destroy_customer_session_path, method: :delete,class: 'd-none d-lg-block nav-link' %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to image_tag('item-rist-btn.png',:size => '100x58'), admin_items_path, class:"d-none d-lg-block nav-link mr-3" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag('user-btn.png',:size => '100x58'), admin_customers_path,class: 'd-none d-lg-block nav-link mr-3' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag('order-rist-btn.png',:size => '100x58'), admin_orders_path, class: 'd-none d-lg-block nav-link text-light mr-3' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag('janre-btn.png',:size => '100x58'), admin_genres_path, class: 'd-none d-lg-block nav-link mr-3' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag('logout-btn.png',:size => '100x58'), destroy_admin_session_path, method: :delete,class: 'd-none d-lg-block nav-link' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to image_tag('about-btn.png',:size => '100x58'), home_about_path, class:"d-none d-lg-block nav-link mr-3" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag('item-rist-btn.png',:size => '100x58'), public_items_path, class:"d-none d-lg-block nav-link mr-3" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag('new-session-btn.png',:size => '100x58'), new_customer_registration_path,class: 'd-none d-lg-block nav-link mr-3' %>
+          </li>
+          <li>
+            <%= link_to image_tag('login-btn.png',:size => '100x58'), new_customer_session_path ,class: 'd-none d-lg-block nav-link'%>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+      <% if admin_signed_in? %>
+        <div class="search-form">
+          <div class="input-group">
+            <%= form_with url:search_path, method: "get", local: true do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+              <span class="input-group-btn">
+              <%= button_tag "", :name => nil, class: "fas fa-search" %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </nav>
+</header>
