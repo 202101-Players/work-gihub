@@ -12,7 +12,7 @@ class Public::CartItemsController < ApplicationController
         new_count = cart_item.count + @cart_item.count
         cart_item.update_attribute(:count, new_count)
         @cart_item.delete
-      end 
+      end
     end
     @cart_item.save
     redirect_to public_cart_items_path
