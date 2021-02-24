@@ -138,3 +138,12 @@ footer {
   bottom: 0; /*下に固定*/
 }
 //footerここまで
+
+.col {
+  .btn {
+    .fontawesome-class {
+    border-radius: 30px;
+    box-shadow: 1px 2px 0px 0px rgba(0,0,0,0.64);
+    }
+  }
+}
