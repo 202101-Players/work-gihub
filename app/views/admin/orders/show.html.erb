@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div class="col-12">
     <h2>注文履歴詳細</h2>
-    <table class="table table-striped">
+    <table class="table table-borderless">
             
             <tr>
              <td>購入者</td>
@@ -25,18 +25,20 @@
              <td>支払方法</td>
              <td>銀行振込</td>
             </tr>
+            
+            <%= form_with model: @order, url:admin_order_path, local: true do |f| %>
+            
             <tr>
               <td>
-                <%= form_with model: @order, url:admin_order_path, local: true do |f| %>
                   <%= f.label :status, '注文ステータス' %>
-                
-                  <%= f.select :status, {'入金待ち': 0, '入金確認': 1, '制作中': 2, '発送準備中': 3, '発送済み': 4}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %></td>
+                </td>
                 <td>
-                <div class="form-group">
-                  <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
-                </div>
-                <% end %>
-                
+                  <%= f.select :status, {'入金待ち': 0, '入金確認': 1, '制作中': 2, '発送準備中': 3, '発送済み': 4}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+                  </td>
+                <td>
+                  
+                  <%= f.submit '更新', class: 'btn btn-primary btn-block' %> <% end %>
+                  
                 </td>
              </tr>
           </table>
@@ -45,26 +47,28 @@
   
 <div class="row">
   <div class="col-8">
-    <table class="table table-striped">
+    <table class="table table-bordered table-sm">
             <tr>
-             <th>注文日時</th>
-             <th>購入者</th>
-             <th>注文個数</th>
+             <th>商品名</th>
+             <th>単価（税込）</th>
+             <th>数量</th>
+             <th>小計</th>
              <th>制作ステータス</th>
-             <th colspan="4"></th>
+             <th colspan="5"></th>
             </tr>
             <% @order.order_items.each do |order_item| %>
              <tr>
                
               <td><%= order_item.item.name %></td>
-             
+           　  <td><%= order_item.item.price %></td>
               <td><%= order_item.amount %>個</td>
+              <td><%= order_item.item.price *  order_item.amount  %></td>
               <td>
                 <%= form_with model: order_item , url:admin_path(@order, order_item), local: true do |f| %>
                 <%= f.select :making_status, {'制作不可': 0, '制作待ち': 1, '制作中': 2, '制作完了': 3}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %> 
-               
+              <td> 
                 <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
-                <% end %>
+                <% end %></td>
               </td> 
              </tr>
             <% end %>
@@ -72,7 +76,7 @@
    </div>
   
   <div class="col-4">
-    <table class="table table-striped">
+    <table class="table table-bordered table-sm">
     <tr>
     </tr> 
     <tr>
