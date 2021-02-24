@@ -8,9 +8,9 @@ class Admin::OrderItemsController < ApplicationController
    
     def update
       @orderitem = OrderItem.find(params[:id])
-      @orderitem.update(order_item_params)
-      if @orderitem.making_status == 2
-         @orderitem.order.update(status: 2)
+      @orderitem.update(making_status: order_item_params.to_i)
+      if @orderitem.making_status_before_type_cast == 3
+         @orderitem.order.update(status: 3)
       end
       
       #全てのorder_itemが制作完了になったら注文ステータスを変更
@@ -18,7 +18,7 @@ class Admin::OrderItemsController < ApplicationController
       
       is_making_status = true #making_statusがすべて3であればtrue,そうでなければfalse
       @order.order_items.each do |order_item|
-        if order_item.making_status != 3
+        if order_item.making_status_before_type_cast != 3
            is_making_status = false
         end
       end
@@ -39,8 +39,10 @@ class Admin::OrderItemsController < ApplicationController
     end
   
     def order_item_params
-      params.require(:order_item).permit(:making_status)
+      params[:order_item][:making_status]
     end
+
+  
   # def index
   #   @order_items = Order_items.all
   # end
@@ -48,7 +50,7 @@ class Admin::OrderItemsController < ApplicationController
   # def show
   #   @order = OrderItems.find(params[:id])
   # end
-
+  
   # private
 
   # def order_params
