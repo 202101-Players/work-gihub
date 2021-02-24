@@ -14,12 +14,7 @@
           
           <div class="d-flex">
             <%= f.label :" ", class:"label" %>
-              <label class="input-group-btn">
-                <span class="btn btn-outline-dark mr-2">
-                  ファイルを選択<input type="file" style="display:none">
-                </span>
-              </label>
-              <input type="text" class="form-control" readonly="" placeholder="選択されていません" style="width: 160px;">
+            <%= f.attachment_field :image %>
           </div>
         </div>
 
@@ -30,7 +25,7 @@
           
           <div class="d-flex">
             <%= f.label :" ", class:"label" %>
-            <%= f.text_field :name, autofocus: true, autocomplete:"current-password", class:'form form-control', style:'width: 300px;' %>
+            <%= f.text_field :name, autofocus: true, autocomplete:"current-password", class:'form form-control' %>
           </div>
         </div>
         
@@ -41,17 +36,55 @@
           
           <div class="d-flex">
             <%= f.label :" ", class:"label" %>
-            <%= f.text_field :name, autofocus: true, autocomplete:"current-password", class:'form form-control', style:'width: 300px; height: 200px;' %>
+            <%= f.text_field :introduction, autofocus: true, autocomplete:"current-password", class:'form form-control textarea' %>
           </div>
         </div>
+        
+        <div class="d-flex flex-row mt-3">
+          <div class="title" style="margin-left: 140px;">
+            <p>ジャンル</p>
+          </div>
+          
+          <div class="d-flex">
+            <%= f.label :" ", class:"label" %>
+            <%= f.collection_select :genre_id, @genres, :id, :name, prompt: "-- 選択してください --", style:'width: 300px;' %>
+          </div>
+        </div>
+        
+        <div class="d-flex flex-row mt-3">
+          <div class="title" style="margin-left: 140px;">
+            <p>税抜価格</p>
+          </div>
+          
+          <div class="d-flex">
+            <%= f.label :" ", class:"label" %>
+            <%= f.text_field :price, style:'width: 300px;' %>円
+          </div>
+        </div>
+        
+        
+        <div class="d-flex flex-row mt-3">
+          <div class="title" style="margin-left: 140px;">
+            <p>税抜価格</p>
+          </div>
+          
+          <div class="d-flex">
+            <%= f.label :" ", class:"label" %>
+            <%= f.radio_button :is_active, true %>
+            <%= f.label :is_active, '販売中', value: true, class:"mr-3" %>
+            <%= f.radio_button :is_active, false %>
+            <%= f.label :is_active, '販売停止中', value: false %>
+          </div>
+        </div>
+        
         <div class="d-flex flex-row mt-3">
           <div class="title" style="margin-left: 140px;">
             <p></p>
           </div>
           
-          <div class="d-flex my-5">
+          <div class="d-flex my-3">
             <%= f.label :" ", class:"label" %>
-            <button type="submit" class="btn btn-primary btn-block btn-size">ログイン</button>
+            <button type="submit" class="btn btn-success btn-lg">新規登録</button>
           </div>
         </div>
       <% end %>
@@ -61,43 +94,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-<div class="container">
- <h4>商品新規登録</h4>
- <div class="row">
-
-
-
-   <div>
-    <.label :"商品名" %>
-    <.text_field :name %>
-   </div>
-   <div>
-    <.label :"商品説明" %>
-    <.text_area :introduction %>
-   </div>
-   <div>
-    <.label :"ジャンル" %>
-    <.collection_select :genre_id, @genres, :id, :name, prompt: "-- 選択してください --" %>
-   </div>
-   <div>
-    <.label :"税抜価格" %>
-    <.text_field :price %>円
-   </div>
-   <div>
-    <.radio_button :is_active, true %>
-    <.label :is_active, '販売中', value: true %>
-   </div>
-   <div>
-    <.radio_button :is_active, false %>
-    <.label :is_active, '販売停止中', value: false %>
-   </div>
-    <.submit '新規登録' %>
-
- </div>
-</div>
-
